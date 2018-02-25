@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>浮层</title>
+</head>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<style type="text/css">
+	.content{position: relative;display: inline-block;}
+	.content>.floatlayer{position: absolute;top: 0;left: 100%;white-space: nowrap;border: 2px solid pink;padding: 10px;display: none;}
+</style>
+<body>
+	<div id="content" class="content">
+		<button id="clickme">我是按钮</button>
+		<div id="floatlayer" class="floatlayer">我是浮层</div>
+	</div>
+</body>
+<script type="text/javascript">
+	$(clickme).on('click',function(){
+  		$(floatlayer).toggle()   // 切换可见状态
+   		$(document).one('click',function(){
+    		$(floatlayer).hide()
+  		})
+	})
+
+	$(content).on('click',function(e){
+  		e.stopPropagation()
+	})
+
+	
+</script>
+</html>
